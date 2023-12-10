@@ -1,6 +1,7 @@
 import Timer from "./components/Timer";
 import ListUser from "./components/ListUser";
 import SaveUser from "./components/SaveUser";
+import CardUSer from "./components/CardUser";
 
 function App() {
   return (
@@ -26,8 +27,9 @@ function App() {
       </header>
       <article className="mt-10  bg-cyan-700 m-auto text-center">
           <Timer />
-          <ListUser />a
+          <ListUser />
       </article>
+      <CardUSer />
     </main>
   );
 }
