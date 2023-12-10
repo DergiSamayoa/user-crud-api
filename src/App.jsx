@@ -2,6 +2,7 @@ import Timer from "./components/Timer";
 import ListUser from "./components/ListUser";
 import CardUSer from "./components/CardUser";
 import ActionButton from "./components/ActionButton";
+import DisplayUser from "./components/DisplayUser";
 
 function App() {
   return (
