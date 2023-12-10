@@ -19,7 +19,7 @@ function App() {
               Search
             </button>
           </div>
-          <button onClick={SaveUser} className="p-2 border-2 bg-blue-500 text-black rounded-2xl ml-4">
+          <button onClick={() => SaveUser("create", {})} className="p-2 border-2 bg-blue-500 text-black rounded-2xl ml-4">
             Add user
           </button>
         </div>
