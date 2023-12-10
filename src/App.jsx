@@ -1,6 +1,7 @@
 import Timer from "./components/Timer";
 import ListUser from "./components/ListUser";
 import SaveUser from "./components/SaveUser";
+import CardUSer from "./components/CardUser";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Timer />
           <ListUser />
       </article>
+      <CardUSer />
     </main>
   );
 }
