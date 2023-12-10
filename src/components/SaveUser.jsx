@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const SaveUser = (mode) => {
+const SaveUser = (mode, currentUser) => {
   const user = {
     first_name: "Pedro",
     last_name: "Almodovar",
@@ -30,8 +30,19 @@ const SaveUser = (mode) => {
   }
 
   if(mode==="delete") {
-    user.id = "60d3b41f8f8b7a0015d9d6e5";
-    
+    axios
+      .delete(`https://users-crud.academlo.tech/users/${currentUser.id}/`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+        console.log(JSON.stringify(response.data));
+        alert("User deleted");
+      })
+      .catch((err) => {
+        console.log("ERROR:", err);
+      });
   }
 
   if(mode==="create") {
