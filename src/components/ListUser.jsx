@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
+import SaveUser from "./SaveUser"
 
 const ListUser = () => {
   const [users, setUsers] = useState([])
@@ -43,7 +44,7 @@ const ListUser = () => {
                 <button className="p-2 border-2 bg-blue-500 text-black rounded-2xl">
                   Edit
                 </button>
-                <button className="p-2 border-2 bg-red-500 text-black rounded-2xl ml-4">
+                <button onClick={() => SaveUser("delete", user)} className="p-2 border-2 bg-red-500 text-black rounded-2xl ml-4">
                   Delete
                 </button>
               </td>
