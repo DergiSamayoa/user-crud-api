@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const SaveUser = (mode, currentUser) => {
-  const user = {
+  const newUser = {
     first_name: "Pedro",
     last_name: "Almodovar",
     birthday: "1969-01-01",
@@ -10,12 +10,12 @@ const SaveUser = (mode, currentUser) => {
     image_url: null,
   };
 
-  if(mode==="edit") {
-    user.id = "60d3b41f8f8b7a0015d9d6e5";
-    user.first_name = "Pedro";
+  if(mode==="update") {
+    currentUser.first_name = "Plutarco";
+    currentUser.birthday = "1990-12-01";
     
     axios
-      .put("https://users-crud.academlo.tech/users/", user, {
+      .put(`https://users-crud.academlo.tech/users/${currentUser.id}/`, currentUser, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -47,7 +47,7 @@ const SaveUser = (mode, currentUser) => {
 
   if(mode==="create") {
     axios
-      .post("https://users-crud.academlo.tech/users/", user, {
+      .post("https://users-crud.academlo.tech/users/", newUser, {
         headers: {
           "Content-Type": "application/json",
         },

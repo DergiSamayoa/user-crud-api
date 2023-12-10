@@ -41,7 +41,7 @@ const ListUser = () => {
               <td className="p-2">{user.password}</td>
               <td className="p-2">{user.image_url}</td>
               <td className="p-2">
-                <button className="p-2 border-2 bg-blue-500 text-black rounded-2xl">
+                <button onClick={() => SaveUser("update", user)}  className="p-2 border-2 bg-blue-500 text-black rounded-2xl">
                   Edit
                 </button>
                 <button onClick={() => SaveUser("delete", user)} className="p-2 border-2 bg-red-500 text-black rounded-2xl ml-4">
