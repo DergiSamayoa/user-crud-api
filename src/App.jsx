@@ -26,7 +26,7 @@ function App() {
       </header>
       <article className="mt-10  bg-cyan-700 m-auto text-center">
           <Timer />
-          <ListUser />
+          <ListUser />a
       </article>
     </main>
   );
