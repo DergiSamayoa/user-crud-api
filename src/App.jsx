@@ -12,6 +12,7 @@ function App() {
         <div className="flex flex-row items-center">
           <div className="border-1 rounded-2xl bg-white">
             <input 
+              name="search"
               className="pl-2 outline-none rounded-2xl w-[320px]" 
               type="text" placeholder="Seach by name" />
             <button className="p-2 border-2 bg-blue-500 text-black rounded-2xl">

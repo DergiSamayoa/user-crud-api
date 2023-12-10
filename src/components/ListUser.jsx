@@ -19,6 +19,7 @@ const ListUser = () => {
       <table className="m-auto">
         <thead>
           <tr>
+            <th className="p-2">Id</th>
             <th className="p-2">Name</th>
             <th className="p-2">Lastname</th>
             <th className="p-2">Birthday</th>
@@ -30,7 +31,8 @@ const ListUser = () => {
         </thead>
         <tbody>
           {users?.map(user => (
-            <tr key={user._id}>
+            <tr key={user.id+user.email}>
+              <td className="p-2">{user.id}</td>
               <td className="p-2">{user.first_name}</td>
               <td className="p-2">{user.last_name}</td>
               <td className="p-2">{user.birthday}</td>
