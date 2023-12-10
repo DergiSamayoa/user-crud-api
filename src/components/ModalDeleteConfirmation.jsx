@@ -2,6 +2,7 @@
 
 //aun por probar 
 //modal hecho con sweet alert 2
+//ya se lo puede usar solo es renderizarlo pero le falta funcionalidad y esas cosas
 
 
 import Swal from 'sweetalert2';
@@ -30,12 +31,12 @@ const ModalDeleteConfirmation = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         swalWithTailwindButtons.fire({
-          title: 'Eliminado!',
+          title: 'Eliminado!',                              //en este if va lo que se hace si el usuario dio a confirmar
           text: 'Tu usuario ha sido eliminado.',
           icon: 'success',
         });
       } else if (result.dismiss === Swal.DismissReason.cancel) {
-        swalWithTailwindButtons.fire({
+        swalWithTailwindButtons.fire({                                      //en este else if va lo que se hace si el usuario no dio a confirmar
           title: 'Cancelado',
           text: 'Tu usuario imaginario no ha sido eliminado. :)',
           icon: 'error',
