@@ -1,6 +1,6 @@
 const DisplayUser = () => {
   return (
-    <div>DisplayUser</div>
+    <form>DisplayUser</form>
   )
 }
 export default DisplayUser
