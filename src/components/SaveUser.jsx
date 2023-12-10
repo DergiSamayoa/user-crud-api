@@ -9,6 +9,7 @@ const SaveUser = (mode, currentUser) => {
     password: "mypassword",
     image_url: null,
   };
+  currentUser = newUser;
 
   if(mode==="update") {
     currentUser.first_name = "Plutarco";
@@ -47,7 +48,7 @@ const SaveUser = (mode, currentUser) => {
 
   if(mode==="create") {
     axios
-      .post("https://users-crud.academlo.tech/users/", newUser, {
+      .post("https://users-crud.academlo.tech/users/", currentUser, {
         headers: {
           "Content-Type": "application/json",
         },
