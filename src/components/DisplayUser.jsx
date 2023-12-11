@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 import variants   from "../utils/VariantsFM";
 import { useForm } from "react-hook-form";
 import { all } from "axios";
+import SaveUser from "./SaveUser";
 
 //los inputs imagenURL y cumpleaños no son obligatorios
 //el datapicker se lo usa como un componente (funciona como un input) *ya esta todo configurado
@@ -24,7 +25,7 @@ const DisplayUser = ({setShowModal}) => {
     endDate: null
   })
 
-  console.log(value.startDate)                                // para ver el valor del datepicker (esta en un objeto y se usa el startDate para acceder al dato)
+  // console.log(value.startDate)                                // para ver el valor del datepicker (esta en un objeto y se usa el startDate para acceder al dato)
 
   const handleValueDate = (newValue) => {         
     setValue(newValue)                                           // setea el value con el valor del la fecha seleccionada
@@ -34,13 +35,21 @@ const DisplayUser = ({setShowModal}) => {
     let allData = {
       ...data,
       birthday: value.startDate
-    }
-    
-    console.log(allData)
+    }        
+    // console.log(allData)
   }
 
-
-
+  const handleSaveUser = (event) => {        
+    console.log(event.target.form.birthday.value) 
+    SaveUser("create", {
+        birthday:event.target.form.birthday.value=="" ? null: event.target.form.birthday.value,
+        email:event.target.form.email.value,
+        first_name:event.target.form.first_name.value,
+        image_url:event.target.form.image_url.value=="" ? null: event.target.form.image_url.value,
+        last_name:event.target.form.last_name.value,
+        password:event.target.form.password.value
+      })                                 
+  }
 
   return (
     <motion.div variants={variantModal} initial="hidden" animate="visible" exit="exit"  transition="transition" className="z-20 fixed w-full h-screen inset-0 flex items-center justify-center bg-black/30">
@@ -57,7 +66,7 @@ const DisplayUser = ({setShowModal}) => {
         </div>
         <div className="flex flex-col">
           <label htmlFor="email">Correo</label>
-          <input className="w-full h-[48px] rounded-md outline-none bg-transparent border-2 px-4 text-[#0f0f2d] placeholder:text-[#bdbdbd]" placeholder="Correo Electronico" {...register("email")} type="text" autoComplete="off"/>
+          <input className="w-full h-[48px] rounded-md outline-none bg-transparent border-2 px-4 text-[#0f0f2d] placeholder:text-[#bdbdbd]" placeholder="Correo Electrónico" {...register("email")} type="text" autoComplete="off"/>
         </div>
         <div className="flex flex-col">
           <label htmlFor="password">Contraseña</label>
@@ -65,15 +74,25 @@ const DisplayUser = ({setShowModal}) => {
         </div>
         <div className="flex flex-col">
           <label htmlFor="birthday">Cumpleaños</label>
-          <Datepicker onChange={handleValueDate} primaryColor="#fff" i18n="es" popoverDirection="up" displayFormat="DD/MM/YYYY"  placeholder="Fecha de Nacimiento" useRange={false} asSingle={true} inputClassName="w-full h-[48px] rounded-md outline-none bg-transparent border-2 px-4 text-[#0f0f2d] placeholder:text-[#bdbdbd] max-sm:popoverDirection-down" type="date" value={value} readOnly />
+          <Datepicker 
+              onChange={handleValueDate} 
+              inputName={"birthday"}
+              primaryColor="#fff" i18n="es" popoverDirection="up" displayFormat="YYYY-MM-DD"  placeholder="Fecha de Nacimiento" useRange={false} asSingle={true} 
+              inputClassName="w-full h-[48px] rounded-md outline-none bg-transparent border-2 px-4 text-[#0f0f2d] placeholder:text-[#bdbdbd] max-sm:popoverDirection-down" type="date" value={value} readOnly />
         </div>
         <div className="flex flex-col">
           <label htmlFor="image_url">Imagen(url)</label>
           <input className="w-full h-[48px] rounded-md outline-none bg-transparent border-2 px-4 text-[#0f0f2d] placeholder:text-[#bdbdbd]" placeholder="URL de la Imagen" name="image_url" type="text" autoComplete="off"/>
         </div>
-        <motion.button variants={variantButton} initial="rest" whileTap="tap" className="border-none flex items-center justify-center gap-2 h-[45px] w-full text-white bg-[#555a88] hover:bg-[#3a3f5c]" type="submit">Agregar nuevo usuario</motion.button>
+        <motion.button 
+            onClick={handleSaveUser}
+            variants={variantButton} initial="rest" whileTap="tap" 
+            className="border-none flex items-center justify-center gap-2 h-[45px] w-full text-white bg-[#555a88] hover:bg-[#3a3f5c]" type="submit">
+          Agregar nuevo usuario
+        </motion.button>
       </motion.form>
     </motion.div>
   );
 };
+
 export default DisplayUser;

@@ -6,7 +6,7 @@ const Timer = () => {
   const [hours, setHours] = useState("");
   const [days, setDays] = useState("");
   useEffect(() => {
-    const endDate = new Date("2023-12-12T23:59:00"); // Fecha de inicio del temporizador
+    const endDate = new Date("2023-12-12T23:59:00Z"); // Fecha de inicio del temporizador
     const interval = setInterval(() => {
       const currentDate = new Date(); // Fecha actual
       const elapsedSeconds = Math.floor((endDate - currentDate) / 1000); // Segundos transcurridos

@@ -1,14 +1,14 @@
 import axios from "axios";
 
 const SaveUser = (mode, currentUser) => {
-  const newUser = {
-    first_name: "Pedro",
-    last_name: "Almodovar",
-    birthday: "1969-01-01",
-    email: "almodovar@myweb.com",
-    password: "mypassword",
-    image_url: null,
-  };
+  // const newUser = {
+  //   first_name: "Pedro",
+  //   last_name: "Almodovar",
+  //   birthday: "1969-01-01",
+  //   email: "almodovar@myweb.com",
+  //   password: "mypassword",
+  //   image_url: null,
+  // };
 
   if (mode === "update") {
     currentUser.first_name = "Plutarco";
@@ -52,7 +52,7 @@ const SaveUser = (mode, currentUser) => {
   }
 
   if (mode === "create") {
-    currentUser = newUser;
+    // currentUser = newUser;
     console.log(JSON.stringify(currentUser));
     axios
       .post("https://users-crud.academlo.tech/users/", currentUser, {
