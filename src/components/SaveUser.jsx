@@ -9,9 +9,17 @@ const notifyError = () => toast.error("Hubo un error, intentalo de nuevo");
 
 
 const SaveUser = (mode, currentUser) => {
+  // Se corrige a null el string vacío para birthday
+  if(currentUser.birthday == ""){
+    currentUser.birthday = null
+  }
+
+  // Se corrige a null el string vacío para image_url
+  if(currentUser.image_ul == ""){
+    currentUser.image_ul = null
+  }
+
   if (mode === "update") {
-    currentUser.first_name = "Plutarco";
-    currentUser.birthday = "1990-12-01";
     console.log("SaveUser: update :",currentUser);
     console.log(`https://users-crud.academlo.tech/users/${currentUser.id}/`);
     axios
@@ -53,13 +61,7 @@ const SaveUser = (mode, currentUser) => {
   }
 
   if (mode === "create") {
-    console.log("SaveUser: create :",currentUser);
-    if(currentUser.birthday == ""){
-      currentUser.birthday = null
-    }
-    if(currentUser.image_ul == ""){
-      currentUser.image_ul = null
-    }
+    console.log("SaveUser: create :",currentUser);    
     axios
       .post("https://users-crud.academlo.tech/users/", currentUser, {
         headers: {
