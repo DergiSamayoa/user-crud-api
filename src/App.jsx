@@ -19,7 +19,7 @@ function App() {
           <ListUser />
       </article>
       <AnimatePresence>
-      {showModal ? <DisplayUser setShowModal={setShowModal}/> : null}
+        {showModal ? <DisplayUser setShowModal={setShowModal}/> : null}
       </AnimatePresence>
     </main>
   );

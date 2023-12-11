@@ -28,7 +28,6 @@ const DisplayUser = ({setShowModal}) => {
   }
 
 
-
   return (
     <motion.div variants={variantModal} initial="hidden" animate="visible" exit="exit"  transition="transition" className="z-20 fixed w-full h-screen inset-0 flex items-center justify-center bg-black/30">
       <motion.form variants={variantForm} initial="hidden" animate="visible" exit="exit" className=" flex flex-col w-[420px] h-[731px] absolute bg-white p-8 justify-between max-sm:w-[340px] max-sm:h-[600px] max-sm:py-3 max-sm:px-5">
