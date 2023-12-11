@@ -9,15 +9,6 @@ const notifyError = () => toast.error("Hubo un error, intentalo de nuevo");
 
 
 const SaveUser = (mode, currentUser) => {
-  // const newUser = {
-  //   first_name: "Pedro",
-  //   last_name: "Almodovar",
-  //   birthday: "1969-01-01",
-  //   email: "almodovar@myweb.com",
-  //   password: "mypassword",
-  //   image_url: null,
-  // };
-
   if (mode === "update") {
     currentUser.first_name = "Plutarco";
     currentUser.birthday = "1990-12-01";
