@@ -30,15 +30,15 @@ const DisplayUser = ({setShowModal}) => {
         <h3 className="text-[32px] font-semibold">Nuevo Usuario</h3>
         <div className="flex flex-col">
           <label htmlFor="first_name">Nombre</label>
-          <input className="w-full h-[48px] rounded-md outline-none bg-transparent border-2 px-4 text-[#0f0f2d] placeholder:text-[#bdbdbd]" placeholder="Nombre" name="first_name" type="text" />
+          <input className="w-full h-[48px] rounded-md outline-none bg-transparent border-2 px-4 text-[#0f0f2d] placeholder:text-[#bdbdbd]" placeholder="Nombre" name="first_name" type="text" autoComplete="off"/>
         </div>
         <div className="flex flex-col">
           <label htmlFor="last_name">Apellidos</label>
-          <input className="w-full h-[48px] rounded-md outline-none bg-transparent border-2 px-4 text-[#0f0f2d] placeholder:text-[#bdbdbd]" placeholder="Apellido" name="last_name" type="text" />
+          <input className="w-full h-[48px] rounded-md outline-none bg-transparent border-2 px-4 text-[#0f0f2d] placeholder:text-[#bdbdbd]" placeholder="Apellido" name="last_name" type="text" autoComplete="off"/>
         </div>
         <div className="flex flex-col">
           <label htmlFor="email">Correo</label>
-          <input className="w-full h-[48px] rounded-md outline-none bg-transparent border-2 px-4 text-[#0f0f2d] placeholder:text-[#bdbdbd]" placeholder="Correo Electronico" name="email" type="text" />
+          <input className="w-full h-[48px] rounded-md outline-none bg-transparent border-2 px-4 text-[#0f0f2d] placeholder:text-[#bdbdbd]" placeholder="Correo Electronico" name="email" type="text" autoComplete="off"/>
         </div>
         <div className="flex flex-col">
           <label htmlFor="birthday">Cumpleaños</label>
@@ -50,7 +50,7 @@ const DisplayUser = ({setShowModal}) => {
         </div>
         <div className="flex flex-col">
           <label htmlFor="image_url">Imagen(url)</label>
-          <input className="w-full h-[48px] rounded-md outline-none bg-transparent border-2 px-4 text-[#0f0f2d] placeholder:text-[#bdbdbd]" placeholder="URL de la Imagen" name="image_url" type="text" />
+          <input className="w-full h-[48px] rounded-md outline-none bg-transparent border-2 px-4 text-[#0f0f2d] placeholder:text-[#bdbdbd]" placeholder="URL de la Imagen" name="image_url" type="text" autoComplete="off"/>
         </div>
         <button className="border-none flex items-center justify-center gap-2 h-[45px] w-full text-white bg-[#555a88] hover:bg-[#3a3f5c]" type="submit">Agregar nuevo usuario</button>
       </form>
