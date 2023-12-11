@@ -13,7 +13,7 @@ function App() {
         <h1 className="text-[50px] font-semibold">Usuarios</h1>
         <ActionButton setShowModal={setShowModal}/>
       </nav>
-      <article className="mt-10 m-auto text-center">
+      <article className="mt-10 m-auto text-center bg-cyan-800">
           <Timer />
           <ListUser />
       </article>
