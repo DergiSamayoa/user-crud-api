@@ -11,19 +11,11 @@ let variantCard = variants.card
 const CardUSer = (currentUser) => {
   const user = currentUser.currentUser
   return (
-<<<<<<< HEAD
     <motion.article variants={variantCard} initial="hidden" animate="visible" exit="exit" className="relative w-[380px] h-[275px] bg-white text-[#0f0f2d] flex flex-col p-5 gap-3 border-[1px] rounded-md border-[#e1e1e1] max-sm:w-[350px] max-sm:h-[245px] max-sm:p-3">
       <h3 className="text-[25px] font-medium">{currentUser.first_name} {currentUser.last_name}</h3>
       <div className="w-full flex flex-col items-start">
         <h4 className="font-[#d3d3d3] opacity-50"></h4>
         <p className="font-medium">{currentUser.email}</p>
-=======
-    <article className="relative w-[380px] h-[275px] bg-white text-[#0f0f2d] flex flex-col p-5 gap-3 border-[1px] border-[#b7b7b7]">
-      <h3 className="text-[25px] font-medium">{user?.first_name} {user?.last_name}</h3>
-      <div className="w-full flex flex-col">
-        <h4 className="font-[#d3d3d3] opacity-50">CORREO</h4>
-        <p className="font-medium">{user?.email}</p>
->>>>>>> 20f7900e9cd61ceaae617ee405758395ec038c14
       </div>
       <div className="w-full flex flex-col">
         <h4 className="font-[#d3d3d3] opacity-50">CUMPLEAÑOS</h4>
