@@ -9,7 +9,7 @@ const CardUSer = (currentUser) => {
       <h3 className="text-[25px] font-medium">{currentUser.first_name} {currentUser.last_name}</h3>
       <div className="w-full flex flex-col items-start">
         <h4 className="font-[#d3d3d3] opacity-50">CORREO</h4>
-        <p className="font-medium">{currentUser.email}a</p>
+        <p className="font-medium">{currentUser.email}</p>
       </div>
       <div className="w-full flex flex-col items-start">
         <h4 className="font-[#d3d3d3] opacity-50">CUMPLEAÑOS</h4>
