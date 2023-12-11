@@ -1,4 +1,12 @@
 import axios from "axios";
+import { toast } from "react-toastify";
+
+
+const notifyCreate = () => toast.success("Usuario creado!");
+const notifyUpdate = () => toast.success("Usuario actualizado!");
+const notifyDelete = () => toast.success("Usuario eliminado!");
+const notifyError = () => toast.error("Hubo un error, intentalo de nuevo");
+
 
 const SaveUser = (mode, currentUser) => {
   const newUser = {
@@ -27,10 +35,11 @@ const SaveUser = (mode, currentUser) => {
       )
       .then((response) => {
         console.log(JSON.stringify(response.data));
-        alert("User updated");
+        notifyUpdate();
       })
       .catch((err) => {
         console.log("ERROR:", err);
+        notifyError();
       });
   }
 
@@ -44,16 +53,17 @@ const SaveUser = (mode, currentUser) => {
       })
       .then((response) => {
         console.log(JSON.stringify(response.data));
-        alert("User deleted");
+        notifyDelete();
       })
       .catch((err) => {
         console.log("ERROR:", err);
+        notifyError();
       });
   }
 
   if (mode === "create") {
     currentUser = newUser;
-    console.log(JSON.stringify(currentUser));
+    console.log(currentUser);
     axios
       .post("https://users-crud.academlo.tech/users/", currentUser, {
         headers: {
@@ -61,11 +71,12 @@ const SaveUser = (mode, currentUser) => {
         },
       })
       .then((response) => {
-        console.log(JSON.stringify(response.data));
-        alert("User created");
+        console.log(response.data);
+        notifyCreate();
       })
       .catch((err) => {
         console.log("ERROR:", err);
+        notifyError();
       });
   }
 
