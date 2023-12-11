@@ -16,11 +16,11 @@ const ListUser = () => {
   }, [])
 
   return (
-    <section className="grid grid-cols-4">
+    <article className="w-full grid grid-cols-3 gap-12">
         {users?.map(user => (
           <CardUser currentUser={user} />
         ))}
-    </section>
+    </article>
   )
 }
 
