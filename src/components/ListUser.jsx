@@ -20,16 +20,6 @@ const ListUser = () => {
         {users?.map(user => (
           <CardUser currentUser={user} />
         ))}
-        <CardUser />
-        <CardUser />
-        <CardUser />
-        <CardUser />
-        <CardUser />
-        <CardUser />
-        <CardUser />
-        <CardUser />
-        <CardUser />
-        <CardUser />
     </article>
   )
 }
