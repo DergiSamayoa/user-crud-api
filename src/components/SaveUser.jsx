@@ -12,7 +12,7 @@ const SaveUser = (mode, currentUser) => {
   if (mode === "update") {
     currentUser.first_name = "Plutarco";
     currentUser.birthday = "1990-12-01";
-    console.log(JSON.stringify(currentUser));
+    console.log("SaveUser: update :",currentUser);
     console.log(`https://users-crud.academlo.tech/users/${currentUser.id}/`);
     axios
       .put(
@@ -35,7 +35,7 @@ const SaveUser = (mode, currentUser) => {
   }
 
   if (mode === "delete") {
-    console.log(JSON.stringify(currentUser));
+    console.log("SaveUser: delete :",currentUser);
     axios
       .delete(`https://users-crud.academlo.tech/users/${currentUser.id}/`, {
         headers: {
@@ -53,7 +53,13 @@ const SaveUser = (mode, currentUser) => {
   }
 
   if (mode === "create") {
-    console.log(currentUser);
+    console.log("SaveUser: create :",currentUser);
+    if(currentUser.birthday == ""){
+      currentUser.birthday = null
+    }
+    if(currentUser.image_ul == ""){
+      currentUser.image_ul = null
+    }
     axios
       .post("https://users-crud.academlo.tech/users/", currentUser, {
         headers: {
