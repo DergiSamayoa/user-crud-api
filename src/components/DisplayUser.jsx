@@ -24,10 +24,10 @@ const DisplayUser = ({setShowModal}) => {
 
 
   return (
-    <div className="z-20 absolute w-full h-screen inset-0 flex items-center justify-center bg-black/30">
-      <form className="flex flex-col w-[420px] h-[731px] absolute bg-white p-8 justify-between">
-        <IconX onClick={() => setShowModal(false)} className="absolute top-4 right-4 cursor-pointer hover:text-[#d85d5d] hover:scale-125" />
-        <h3 className="text-[32px] font-semibold">Nuevo Usuario</h3>
+    <div className="z-20 fixed w-full h-screen inset-0 flex items-center justify-center bg-black/30">
+      <form className=" flex flex-col w-[420px] h-[731px] absolute bg-white p-8 justify-between max-sm:w-[340px] max-sm:h-[600px] max-sm:py-3 max-sm:px-5">
+        <IconX onClick={() => setShowModal(false)} className="absolute w-8 h-8 top-4 right-4 cursor-pointer hover:text-[#d85d5d] hover:scale-125 active:text-[#d85d5d]"/>
+        <h3 className="text-[32px] font-semibold max-sm:text-[24px]">Nuevo Usuario</h3>
         <div className="flex flex-col">
           <label htmlFor="first_name">Nombre</label>
           <input className="w-full h-[48px] rounded-md outline-none bg-transparent border-2 px-4 text-[#0f0f2d] placeholder:text-[#bdbdbd]" placeholder="Nombre" name="first_name" type="text" autoComplete="off"/>
@@ -41,12 +41,12 @@ const DisplayUser = ({setShowModal}) => {
           <input className="w-full h-[48px] rounded-md outline-none bg-transparent border-2 px-4 text-[#0f0f2d] placeholder:text-[#bdbdbd]" placeholder="Correo Electronico" name="email" type="text" autoComplete="off"/>
         </div>
         <div className="flex flex-col">
-          <label htmlFor="birthday">Cumpleaños</label>
-          <Datepicker onChange={handleValueChange} primaryColor="#fff" i18n="es" popoverDirection="up" displayFormat="DD/MM/YYYY"  placeholder="Fecha de Nacimiento" useRange={false} asSingle={true} inputClassName="w-full h-[48px] rounded-md outline-none bg-transparent border-2 px-4 text-[#0f0f2d] placeholder:text-[#bdbdbd]" name="birthday" type="date" value={value} />
+          <label htmlFor="password">Contraseña</label>
+          <input className="w-full h-[48px] rounded-md outline-none bg-transparent border-2 px-4 text-[#0f0f2d] placeholder:text-[#bdbdbd]" placeholder="Contraseña" name="password" type="password"/>
         </div>
         <div className="flex flex-col">
-          <label htmlFor="password">Contraseña</label>
-          <input className="w-full h-[48px] rounded-md outline-none bg-transparent border-2 px-4 text-[#0f0f2d] placeholder:text-[#bdbdbd]" placeholder="Contraseña" name="password" type="password" />
+          <label htmlFor="birthday">Cumpleaños</label>
+          <Datepicker onChange={handleValueChange} primaryColor="#fff" i18n="es" popoverDirection="up" displayFormat="DD/MM/YYYY"  placeholder="Fecha de Nacimiento" useRange={false} asSingle={true} inputClassName="w-full h-[48px] rounded-md outline-none bg-transparent border-2 px-4 text-[#0f0f2d] placeholder:text-[#bdbdbd] max-sm:popoverDirection-down" name="birthday" type="date" value={value} readOnly />
         </div>
         <div className="flex flex-col">
           <label htmlFor="image_url">Imagen(url)</label>
