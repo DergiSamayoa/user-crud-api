@@ -15,7 +15,8 @@ const DisplayUser = ({setShowModal}) => {
     endDate: null
   })
 
-  console.log(value.startDate)                                // para ver el valor del datepicker (esta en un objeto y se usa el startDate para acceder al dato)
+  console.log(value.startDate) 
+  console.log(value.endDate)                               // para ver el valor del datepicker (esta en un objeto y se usa el startDate para acceder al dato)
 
   const handleValueChange = (newValue) => {         
     setValue(newValue)                                           // setea el value con el valor del la fecha seleccionada
