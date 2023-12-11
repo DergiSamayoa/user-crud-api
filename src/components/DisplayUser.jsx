@@ -1,61 +1,70 @@
 //tareas por terminar: validacion de campos y las animaciones
+//datepicker desactivado por problemas al editar (no se puede editar el valor del datepicker)
 
 
-import { IconX } from "@tabler/icons-react";
-import { useState } from "react";
-import Datepicker from "react-tailwindcss-datepicker";
-import { motion } from "framer-motion";
-import variants   from "../utils/VariantsFM";
-import { useForm } from "react-hook-form";
-import { all } from "axios";
-import SaveUser from "./SaveUser";
 
 //los inputs imagenURL y cumpleaños no son obligatorios
 //el datapicker se lo usa como un componente (funciona como un input) *ya esta todo configurado
+
+/* const [value, setValue] = useState({                        // declaro los valores del datepicker (el endDate no es necesario)
+  startDate: "2020-02-02",
+  endDate: null
+})                              // para ver el valor del datepicker (esta en un objeto y se usa el startDate para acceder al dato)
+
+const handleValueDate = (newValue) => { 
+  console.log(newValue)        
+  setValue(newValue) 
+  setBirthday(newValue.startDate)                                          // setea el value con el valor del la fecha seleccionada
+}
+
+
+const handleSubmitAll = (data) => {
+  console.log(data)
+  
+  let allData = {
+    ...data,
+    birthday: value.startDate
+  }
+  
+  SaveUser("create", data)
+  setUpdateUsers(true)
+} */
+import { IconX } from "@tabler/icons-react";
+import { motion } from "framer-motion";
+import variants   from "../utils/VariantsFM";
+import SaveUser from "./SaveUser";
 
 let variantForm = variants.form
 let variantModal = variants.modalForm
 let variantButton = variants.button
 
 
-const DisplayUser = ({setShowModal}) => {
-  const { register, handleSubmit } = useForm();
-  const [value, setValue] = useState({                        // declaro los valores del datepicker (el endDate no es necesario)
-    startDate: null,
-    endDate: null
-  })
+const DisplayUser = ({setUpdateUsers, register, handleSubmit, editUserMode, handleCloseModal, idUser}) => {
+  console.log(idUser)
 
-  // console.log(value.startDate)                                // para ver el valor del datepicker (esta en un objeto y se usa el startDate para acceder al dato)
-
-  const handleValueDate = (newValue) => {         
-    setValue(newValue)                                           // setea el value con el valor del la fecha seleccionada
+  const handleSubmitAll = (data) => {
+    handleCloseModal()
+    if(editUserMode) {
+      let dataUser = {
+        ...data,
+        id: idUser
+      }
+      console.log(dataUser)
+      SaveUser("update", dataUser)
+    }
+    else {
+      SaveUser("create", data)
+    }
+    setUpdateUsers(true)
   }
 
-  const joinAllValues = (data) => {
-    let allData = {
-      ...data,
-      birthday: value.startDate
-    }        
-    // console.log(allData)
-  }
 
-  const handleSaveUser = (event) => {        
-    console.log(event.target.form.birthday.value) 
-    SaveUser("create", {
-        birthday:event.target.form.birthday.value=="" ? null: event.target.form.birthday.value,
-        email:event.target.form.email.value,
-        first_name:event.target.form.first_name.value,
-        image_url:event.target.form.image_url.value=="" ? null: event.target.form.image_url.value,
-        last_name:event.target.form.last_name.value,
-        password:event.target.form.password.value
-      })                                 
-  }
 
   return (
     <motion.div variants={variantModal} initial="hidden" animate="visible" exit="exit"  transition="transition" className="z-20 fixed w-full h-screen inset-0 flex items-center justify-center bg-black/30">
-      <motion.form onSubmit={handleSubmit(joinAllValues)} variants={variantForm} initial="hidden" animate="visible" exit="exit" className=" flex flex-col w-[420px] h-[731px] absolute bg-white p-8 justify-between max-sm:w-[340px] max-sm:h-[600px] max-sm:py-3 max-sm:px-5">
-        <IconX onClick={() => setShowModal(false)} className="absolute w-8 h-8 top-4 right-4 cursor-pointer hover:text-[#d85d5d] hover:scale-125 active:text-[#d85d5d] transition-all duration-150"/>
-        <h3 className="text-[32px] font-semibold max-sm:text-[24px]">Nuevo Usuario</h3>
+      <motion.form onSubmit={handleSubmit(handleSubmitAll)} variants={variantForm} initial="hidden" animate="visible" exit="exit" className=" flex flex-col w-[420px] h-[731px] absolute bg-white p-8 justify-between max-sm:w-[340px] max-sm:h-[600px] max-sm:py-3 max-sm:px-5">
+        <IconX onClick={handleCloseModal} className="absolute w-8 h-8 top-4 right-4 cursor-pointer hover:text-[#d85d5d] hover:scale-125 active:text-[#d85d5d] transition-all duration-150"/>
+        <h3 className="text-[32px] font-semibold max-sm:text-[24px]">{editUserMode ? "Editar Usuario" : "Nuevo Usuario"}</h3>
         <div className="flex flex-col">
           <label htmlFor="first_name">Nombre</label>
           <input className="w-full h-[48px] rounded-md outline-none bg-transparent border-2 px-4 text-[#0f0f2d] placeholder:text-[#bdbdbd]" placeholder="Nombre" {...register("first_name")} type="text" autoComplete="off"/>
@@ -74,22 +83,14 @@ const DisplayUser = ({setShowModal}) => {
         </div>
         <div className="flex flex-col">
           <label htmlFor="birthday">Cumpleaños</label>
-          <Datepicker 
-              onChange={handleValueDate} 
-              inputName={"birthday"}
-              primaryColor="#fff" i18n="es" popoverDirection="up" displayFormat="YYYY-MM-DD"  placeholder="Fecha de Nacimiento" useRange={false} asSingle={true} 
-              inputClassName="w-full h-[48px] rounded-md outline-none bg-transparent border-2 px-4 text-[#0f0f2d] placeholder:text-[#bdbdbd] max-sm:popoverDirection-down" type="date" value={value} readOnly />
+          <input name="birthday" type="date" className="w-full h-[48px] rounded-md outline-none bg-transparent border-2 px-4 text-[#0f0f2d] placeholder:text-[#bdbdbd]" {...register("birthday")} />
+          {/* <Datepicker onChange={handleValueDate} primaryColor="#fff" i18n="es" popoverDirection="up" displayFormat="DD/MM/YYYY"  placeholder="Fecha de Nacimiento" useRange={false} asSingle={true} inputClassName="w-full h-[48px] rounded-md outline-none bg-transparent border-2 px-4 text-[#0f0f2d] placeholder:text-[#bdbdbd] max-sm:popoverDirection-down" type="date" value={value} readOnly /> */}
         </div>
         <div className="flex flex-col">
           <label htmlFor="image_url">Imagen(url)</label>
           <input className="w-full h-[48px] rounded-md outline-none bg-transparent border-2 px-4 text-[#0f0f2d] placeholder:text-[#bdbdbd]" placeholder="URL de la Imagen" name="image_url" type="text" autoComplete="off"/>
         </div>
-        <motion.button 
-            onClick={handleSaveUser}
-            variants={variantButton} initial="rest" whileTap="tap" 
-            className="border-none flex items-center justify-center gap-2 h-[45px] w-full text-white bg-[#555a88] hover:bg-[#3a3f5c]" type="submit">
-          Agregar nuevo usuario
-        </motion.button>
+        <motion.button variants={variantButton} initial="rest" whileTap="tap" className="border-none flex items-center justify-center gap-2 h-[45px] w-full text-white bg-[#555a88] hover:bg-[#3a3f5c]" type="submit">{editUserMode ? "Guardar cambios" : "Agregar nuevo usuario"}</motion.button>
       </motion.form>
     </motion.div>
   );

@@ -3,7 +3,7 @@ import axios from "axios"
 import CardUser from "./CardUser"
 import { AnimatePresence } from "framer-motion"
 
-const ListUser = () => {
+const ListUser = ({updateUsers, setUpdateUsers, editMode}) => {
   const [users, setUsers] = useState([])
 
   useEffect(() => {
@@ -13,13 +13,16 @@ const ListUser = () => {
       .catch(err => {
         console.log(err)
       })
-  }, [])
+
+    console.log("se actualizaron los usuarios")
+    setUpdateUsers(false)
+  }, [updateUsers])
 
   return (
-    <article className="w-full grid grid-cols-3 gap-12 max-xl:grid-cols-2 max-lg:grid-cols-1 max-sm:gap-6">
+    <article className="w-full justify-items-center grid grid-cols-3 gap-12 max-xl:grid-cols-2 max-lg:grid-cols-1 max-sm:gap-6">
         <AnimatePresence>
         {users?.map(user => (
-          <CardUser key={user.id+user.email} currentUser={user} />
+          <CardUser key={user.id+user.email} currentUser={user} setUpdateUsers={setUpdateUsers} editMode={editMode}/>
         ))}
         </AnimatePresence>
     </article>
