@@ -58,7 +58,6 @@ function App() {
       <AnimatePresence> 
         {showModal ? <DisplayUser setUpdateUsers={setUpdateUsers} register={register} handleSubmit={handleSubmit} editUserMode={editUserMode} handleCloseModal={handleCloseModal} idUser={idUser} control={control}/> : null}
       </AnimatePresence>
-      <ModalDeleteConfirmation />
     </main>
   );
 }

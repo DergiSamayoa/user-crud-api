@@ -48,20 +48,21 @@ const variants = {
   },
   card: {
     hidden: {
-      opacity: 0,
-      scale: 0.8,
+      opacity: 0.5,
+      scale: 0.3,
     },
     visible: {
       opacity: 1,
-      scale: 1,
+      scale: [0.80, 1.05, 1],
       transition: {
-        duration: 0.5,
+        duration: 0.6,
         ease: 'easeInOut',
       },
     },
     exit: {
       opacity: 0,
-      scale: 0.5,
+      scale: 0.2,
+      
       transition: {
         duration: 0.3,
         ease: 'easeInOut',
