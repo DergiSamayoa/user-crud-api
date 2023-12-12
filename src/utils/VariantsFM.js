@@ -46,6 +46,29 @@ const variants = {
       }
     }
   },
+  cardModal: {
+    hidden: {
+      opacity: 0,
+      scale: 0,
+    },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 0.1,
+        ease: 'easeIn',
+      },
+    },
+    exit: {
+      opacity: 0,
+      scale: 0,
+      transition: {
+        
+        duration: 0.3,
+        ease: 'easeIn',
+      }
+    }
+  },
   card: {
     hidden: {
       opacity: 0.5,

@@ -19,7 +19,7 @@ const ListUser = ({updateUsers, setUpdateUsers, editMode}) => {
   }, [updateUsers])
 
   return (
-    <article className="w-full justify-items-center grid grid-cols-3 gap-12 max-xl:grid-cols-2 max-lg:grid-cols-1 max-sm:gap-6">
+    <article className="w-full mt-8 justify-items-center grid grid-cols-3 gap-12 max-xl:grid-cols-2 max-lg:grid-cols-1 max-sm:gap-6">
         <AnimatePresence>
         {users?.map(user => (
           <CardUser key={user.id+user.email} currentUser={user} setUpdateUsers={setUpdateUsers} editMode={editMode}/>
