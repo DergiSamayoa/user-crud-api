@@ -23,18 +23,15 @@ const DisplayUser = ({setUpdateUsers, register, handleSubmit, editUserMode, hand
 
 
   const handleSubmitAll = (data) => {
-    console.log(data)
     handleCloseModal()
     if(editUserMode) {
       let dataUser = {
         ...data,
         id: idUser.id
       }
-      console.log(dataUser)
       SaveUser("update", dataUser)
     }
     else {
-      console.log(data)
       SaveUser("create", data)
     }
     setUpdateUsers(true)
@@ -44,7 +41,6 @@ const DisplayUser = ({setUpdateUsers, register, handleSubmit, editUserMode, hand
 
 
 useEffect(() => {
-  console.log(idUser)
   if(editUserMode){
     setValue({
       startDate: idUser.birthday,

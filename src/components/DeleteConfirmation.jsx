@@ -23,7 +23,7 @@ const DeleteConfirmation = ({user, setDeleteModal, setUpdateUsers}) => {
 
   return (
     <>
-      <motion.div variants={variantBg} initial="hidden" animate="visible" exit="exit" className="fixed inset-0 z-10 flex justify-center items-center backdrop-blur-sm bg-black/30 p-8" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+      <motion.div variants={variantBg} initial="hidden" animate="visible" exit="exit" className="fixed inset-0 z-20 flex justify-center items-center backdrop-blur-sm bg-black/30 p-8" aria-labelledby="modal-title" role="dialog" aria-modal="true">
           <motion.div variants={variantCard} initial="hidden" animate="visible" exit="exit" transition="transition" className="relative py-10 px-16 inline-block overflow-hidden text-left align-bottom transition-all transform bg-white rounded-lg shadow-xl dark:bg-gray-900 max-sm:py-4">
           <IconX onClick={handleCloseModalDelete} className="absolute w-8 h-8 top-4 right-4 cursor-pointer hover:text-[#d85d5d] hover:scale-125 active:text-[#d85d5d] transition-all duration-150"/>
             <div>

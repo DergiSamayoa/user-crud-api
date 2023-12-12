@@ -18,7 +18,6 @@ function App() {
   const editMode = (user) => {
     setEditUserMode(true)
     setShowModal(true)
-    console.log(user.id)
     setValue("first_name", user.first_name)
     setValue("last_name", user.last_name)
     setValue("email", user.email)

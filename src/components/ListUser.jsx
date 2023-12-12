@@ -13,8 +13,6 @@ const ListUser = ({updateUsers, setUpdateUsers, editMode}) => {
       .catch(err => {
         console.log(err)
       })
-
-    console.log("se actualizaron los usuarios")
     setUpdateUsers(false)
   }, [updateUsers])
 

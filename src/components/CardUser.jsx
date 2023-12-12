@@ -24,11 +24,11 @@ const CardUSer = ({ currentUser: user, setUpdateUsers, editMode }) => {
       <AnimatePresence>
         {deleteModal ? <DeleteConfirmation user={user} setDeleteModal={setDeleteModal} setUpdateUsers={setUpdateUsers} /> : null}
       </AnimatePresence>
-      <h3 className="text-[25px] font-medium">{user.first_name} {user.last_name}</h3>
-      <div className=" absolute -top-3 -right-3 w-[190px] rounded-es-full shadow-gray-500/30 shadow-md">
+      <h3 className="z-10 text-[25px] font-medium">{user.first_name} {user.last_name}</h3>
+      <div className="z-0 absolute -top-3 -right-3 w-[190px] rounded-es-full shadow-gray-500/30 shadow-md">
         <img className="h-[190px] w-[190px] object-cover rounded-es-full" src={user.image_url} alt="" />
       </div>
-      <div className="w-full flex flex-col items-start">
+      <div className="z-10 w-full flex flex-col items-start">
         <h4 className="font-[#d3d3d3] opacity-50">CORREO</h4>
         <p className="font-medium">{user.email}</p>
       </div>
