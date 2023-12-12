@@ -1,37 +1,6 @@
 //tareas por terminar: validacion de campos y las animaciones
 //datepicker desactivado por problemas al editar (no se puede editar el valor del datepicker)
 
-
-/* <input name="birthday" type="date" className="w-full h-[48px] rounded-md outline-none bg-transparent border-2 px-4 text-[#0f0f2d] placeholder:text-[#bdbdbd]" {...register("birthday")} />
-<Datepicker onChange={handleValueDate} primaryColor="#fff" i18n="es" popoverDirection="up" displayFormat="DD/MM/YYYY"  placeholder="Fecha de Nacimiento" useRange={false} asSingle={true} inputClassName="w-full h-[48px] rounded-md outline-none bg-transparent border-2 px-4 text-[#0f0f2d] placeholder:text-[#bdbdbd] max-sm:popoverDirection-down" type="date" value={value} readOnly /> */
-        
-
-//los inputs imagenURL y cumpleaños no son obligatorios
-//el datapicker se lo usa como un componente (funciona como un input) *ya esta todo configurado
-
-/* const [value, setValue] = useState({                        // declaro los valores del datepicker (el endDate no es necesario)
-  startDate: "2020-02-02",
-  endDate: null
-})                              // para ver el valor del datepicker (esta en un objeto y se usa el startDate para acceder al dato)
-
-const handleValueDate = (newValue) => { 
-  console.log(newValue)        
-  setValue(newValue) 
-  setBirthday(newValue.startDate)                                          // setea el value con el valor del la fecha seleccionada
-}
-
-
-const handleSubmitAll = (data) => {
-  console.log(data)
-  
-  let allData = {
-    ...data,
-    birthday: value.startDate
-  }
-  
-  SaveUser("create", data)
-  setUpdateUsers(true)
-} */
 import { IconX } from "@tabler/icons-react";
 import { motion } from "framer-motion";
 import variants   from "../utils/VariantsFM";
@@ -59,7 +28,7 @@ const DisplayUser = ({setUpdateUsers, register, handleSubmit, editUserMode, hand
     if(editUserMode) {
       let dataUser = {
         ...data,
-        id: idUser
+        id: idUser.id
       }
       console.log(dataUser)
       SaveUser("update", dataUser)
@@ -134,7 +103,7 @@ useEffect(() => {
         </div>
         <div className="flex flex-col m-0">
           <label htmlFor="image_url">Imagen(url)</label>
-          <input className="w-full h-[36px] rounded-md outline-none bg-transparent border-2 px-4 text-[#0f0f2d] placeholder:text-[#bdbdbd]" placeholder="URL de la Imagen" {...register("image_url")} type="text" autoComplete="off"/>
+          <input className="w-full h-[36px] rounded-md outline-none bg-transparent border-2 px-4 text-[#0f0f2d] placeholder:text-[#bdbdbd]" placeholder="URL de la Imagen" name="image_url" type="text" autoComplete="off"/>
         </div>
         <motion.button variants={variantButton} initial="rest" whileTap="tap" className="border-none flex items-center justify-center gap-2 h-[45px] w-full text-white bg-[#555a88] hover:bg-[#3a3f5c]" type="submit">{editUserMode ? "Guardar cambios" : "Agregar nuevo usuario"}</motion.button>
       </motion.form>

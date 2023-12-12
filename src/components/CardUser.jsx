@@ -25,9 +25,9 @@ const CardUSer = ({ currentUser: user, setUpdateUsers, editMode }) => {
   return (
     <motion.article layoutId={user.id} variants={variantCard} initial="hidden" animate="visible" exit="exit" className="relative w-[380px] h-[275px] bg-white text-[#0f0f2d] flex flex-col p-5 gap-3 border-[1px] rounded-md border-[#e1e1e1] max-sm:w-[350px] max-sm:h-[245px] max-sm:p-3 shadow-[2px_2px_2px_0_rgba(0,0,0,0.1)] overflow-hidden">
       <h3 className="text-[25px] font-medium">{user.first_name} {user.last_name}</h3>
-      <div className=" absolute top-0 right-0 w-[190px] rounded-es-full shadow-black/70 shadow-md">
+      {/* <div className=" absolute top-0 right-0 w-[190px] rounded-es-full shadow-black/70 shadow-md">
         <img className="h-[190px] w-[190px] object-cover rounded-es-full" src={user.image_url} alt="" />
-      </div>
+      </div> */}
       <div className="w-full flex flex-col items-start">
         <h4 className="font-[#d3d3d3] opacity-50">CORREO</h4>
         <p className="font-medium">{user.email}</p>
