@@ -7,11 +7,12 @@ import { AnimatePresence } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ModalDeleteConfirmation from "./components/ModalDeleteConfirmation";
 
 function App() {
   const [showModal, setShowModal] = useState(false)     // para mostrar el modal de creacion (componentes que lo usan: ActionButton, DisplayUser)
   const [updateUsers, setUpdateUsers] = useState(false) // para actualizar la lista de usuarios
-  const { register, handleSubmit, setValue, reset } = useForm();
+  const { register, handleSubmit, setValue, reset, control } = useForm();
   const [editUserMode, setEditUserMode] = useState(false)
   const [idUser, setIdUser] = useState(null)
 
@@ -24,8 +25,8 @@ function App() {
     setValue("last_name", user.last_name)
     setValue("email", user.email)
     setValue("password", user.password)
-    setValue("birthday", user.birthday)
-    setIdUser(user.id)
+    //setValue("birthday", user.birthday)
+    setIdUser(user)
   }
 
 
@@ -55,8 +56,9 @@ function App() {
       </article>
         <ListUser updateUsers={updateUsers} setUpdateUsers={setUpdateUsers} editMode={editMode}/>
       <AnimatePresence> 
-        {showModal ? <DisplayUser setUpdateUsers={setUpdateUsers} register={register} handleSubmit={handleSubmit} editUserMode={editUserMode} handleCloseModal={handleCloseModal} idUser={idUser}/> : null}
+        {showModal ? <DisplayUser setUpdateUsers={setUpdateUsers} register={register} handleSubmit={handleSubmit} editUserMode={editUserMode} handleCloseModal={handleCloseModal} idUser={idUser} control={control}/> : null}
       </AnimatePresence>
+      <ModalDeleteConfirmation />
     </main>
   );
 }

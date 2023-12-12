@@ -2,6 +2,9 @@
 //datepicker desactivado por problemas al editar (no se puede editar el valor del datepicker)
 
 
+/* <input name="birthday" type="date" className="w-full h-[48px] rounded-md outline-none bg-transparent border-2 px-4 text-[#0f0f2d] placeholder:text-[#bdbdbd]" {...register("birthday")} />
+<Datepicker onChange={handleValueDate} primaryColor="#fff" i18n="es" popoverDirection="up" displayFormat="DD/MM/YYYY"  placeholder="Fecha de Nacimiento" useRange={false} asSingle={true} inputClassName="w-full h-[48px] rounded-md outline-none bg-transparent border-2 px-4 text-[#0f0f2d] placeholder:text-[#bdbdbd] max-sm:popoverDirection-down" type="date" value={value} readOnly /> */
+        
 
 //los inputs imagenURL y cumpleaños no son obligatorios
 //el datapicker se lo usa como un componente (funciona como un input) *ya esta todo configurado
@@ -33,16 +36,25 @@ import { IconX } from "@tabler/icons-react";
 import { motion } from "framer-motion";
 import variants   from "../utils/VariantsFM";
 import SaveUser from "./SaveUser";
+import Datepicker from "react-tailwindcss-datepicker";
+import { useEffect, useState } from "react";
+import { Controller } from "react-hook-form";
 
 let variantForm = variants.form
 let variantModal = variants.modalForm
 let variantButton = variants.button
 
 
-const DisplayUser = ({setUpdateUsers, register, handleSubmit, editUserMode, handleCloseModal, idUser}) => {
-  console.log(idUser)
+const DisplayUser = ({setUpdateUsers, register, handleSubmit, editUserMode, handleCloseModal, idUser, control}) => {
+
+  const [value, setValue] = useState({                        // declaro los valores del datepicker (el endDate no es necesario)
+    startDate: null,
+    endDate: null
+  })
+
 
   const handleSubmitAll = (data) => {
+    console.log(data)
     handleCloseModal()
     if(editUserMode) {
       let dataUser = {
@@ -53,10 +65,24 @@ const DisplayUser = ({setUpdateUsers, register, handleSubmit, editUserMode, hand
       SaveUser("update", dataUser)
     }
     else {
+      console.log(data)
       SaveUser("create", data)
     }
     setUpdateUsers(true)
   }
+
+
+
+
+useEffect(() => {
+  console.log(idUser)
+  if(editUserMode){
+    setValue({
+      startDate: idUser.birthday,
+      endDate: idUser.birthday
+    })
+  }
+}, [idUser])
 
 
 
@@ -83,8 +109,28 @@ const DisplayUser = ({setUpdateUsers, register, handleSubmit, editUserMode, hand
         </div>
         <div className="flex flex-col">
           <label htmlFor="birthday">Cumpleaños</label>
-          <input name="birthday" type="date" className="w-full h-[48px] rounded-md outline-none bg-transparent border-2 px-4 text-[#0f0f2d] placeholder:text-[#bdbdbd]" {...register("birthday")} />
-          {/* <Datepicker onChange={handleValueDate} primaryColor="#fff" i18n="es" popoverDirection="up" displayFormat="DD/MM/YYYY"  placeholder="Fecha de Nacimiento" useRange={false} asSingle={true} inputClassName="w-full h-[48px] rounded-md outline-none bg-transparent border-2 px-4 text-[#0f0f2d] placeholder:text-[#bdbdbd] max-sm:popoverDirection-down" type="date" value={value} readOnly /> */}
+          <Controller 
+            control={control}
+            name="birthday"
+            render={({field}) => (
+              <Datepicker
+                onChange={(data) => {
+                  field.onChange(data.startDate),
+                  setValue(data)
+                }}
+                i18n="es"
+                popoverDirection="up"
+                displayFormat="DD/MM/YYYY"
+                placeholder="Fecha de Nacimiento"
+                useRange={false}
+                asSingle={true}
+                inputClassName="w-full h-[48px] rounded-md outline-none bg-transparent border-2 px-4 text-[#0f0f2d] placeholder:text-[#bdbdbd] max-sm:popoverDirection-down"
+                type="date"
+                value={value}
+                readOnly
+              />
+            )}
+          />
         </div>
         <div className="flex flex-col">
           <label htmlFor="image_url">Imagen(url)</label>

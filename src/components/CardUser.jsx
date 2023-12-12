@@ -20,7 +20,6 @@ const CardUSer = ({ currentUser: user, setUpdateUsers, editMode }) => {
   const handleEdit = (user) => {
     SaveUser("edit", user)
     editMode(user)
-
   }
 
   return (
