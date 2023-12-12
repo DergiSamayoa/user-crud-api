@@ -15,8 +15,8 @@ const SaveUser = (mode, currentUser) => {
   }
 
   // Se corrige a null el string vacío para image_url
-  if(currentUser.image_ul == ""){
-    currentUser.image_ul = null
+  if(currentUser.image_url == ""){
+    currentUser.image_url = null
   }
 
   if (mode === "update") {

@@ -1,5 +1,3 @@
-
-
 //aun por probar 
 //modal hecho con sweet alert 2
 //ya se lo puede usar solo es renderizarlo pero le falta funcionalidad y esas cosas

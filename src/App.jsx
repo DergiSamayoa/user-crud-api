@@ -25,6 +25,7 @@ function App() {
     setValue("last_name", user.last_name)
     setValue("email", user.email)
     setValue("password", user.password)
+    setValue("image_url", user.image_url)
     //setValue("birthday", user.birthday)
     setIdUser(user)
   }
