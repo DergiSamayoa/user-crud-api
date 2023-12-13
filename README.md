@@ -47,7 +47,7 @@ Contributions are welcome! If you have ideas to improve the application, please 
 
 This project was created by:
 - [Jesús Aguilar](https://github.com/JesusAguilarAliaga)
-- 
+- [Dergi Samayoa](https://github.com/DergiSamayoa)
 - 
 
 ## Acknowledgments
@@ -90,7 +90,7 @@ Esta aplicación web permite a los usuarios crear, eliminar, editar y visualizar
 
 Este proyecto fue creado por:
 - [Jesús Aguilar](https://github.com/JesusAguilarAliaga)
--
+- [Dergi Samayoa](https://github.com/DergiSamayoa)
 -
 
 ## Agradecimientos
