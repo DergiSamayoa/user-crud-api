@@ -2,6 +2,7 @@
 //datepicker desactivado por problemas al editar (no se puede editar el valor del datepicker)
 
 import { IconX } from "@tabler/icons-react";
+import { IconEye, IconEyeOff } from "@tabler/icons-react";
 import { motion } from "framer-motion";
 import variants   from "../utils/VariantsFM";
 import SaveUser from "./SaveUser";
@@ -50,6 +51,10 @@ useEffect(() => {
 }, [idUser])
 
 
+  const [showPassword, setShowPassword] = useState(true);
+  useEffect(() => {
+    setShowPassword(!showPassword)
+  }, [])
 
   return (
     <motion.div variants={variantModal} initial="hidden" animate="visible" exit="exit"  transition="transition" className="z-20 fixed w-full h-screen inset-0 flex items-center justify-center bg-black/30">
@@ -73,7 +78,23 @@ useEffect(() => {
         </div>
         <div className="relative flex flex-col m-0">
           <label htmlFor="password">Contraseña<span className="text-[#d85d5d]">*</span></label>
-          <input className="w-full h-[46px] rounded-md outline-none bg-transparent border-2 px-4 text-[#0f0f2d] placeholder:text-[#bdbdbd]" placeholder="Contraseña" {...register("password", {minLength: {value: 8, message: "La contraseña debe tener al menos 8 caracteres"}})} type="text"/>
+          <div className="flex flex-row w-full border-2 rounded-md "> 
+              <input
+                className="w-full h-[46px] rounded-md outline-none bg-transparent  px-4 text-[#0f0f2d] placeholder:text-[#bdbdbd]"
+                placeholder="Contraseña"
+                {...register("password", {
+                  minLength: { value: 8, message: "La contraseña debe tener al menos 8 caracteres" },
+                })}
+                type={showPassword ? "text" : "password"} // Agrega esta línea para cambiar el tipo de entrada
+              />
+              <button 
+                  onClick={() => setShowPassword(!showPassword)} 
+                  type="button"
+                  className="flex items-center justify-center w-[50px] h-[46px] rounded-md border-[#bdbdbd] outline-none focus:outline-none hover:bg-[#f2f2f2] transition-all duration-150 text-gray-400"
+                  >
+                {showPassword ? <IconEyeOff /> : <IconEye />}
+              </button>
+          </div>
           {errors.password ? <p className="text-[#d85d5d] w-full absolute -bottom-4 text-[12px]">{errors.password.message}</p> : null}
         </div>
         <div className="relative flex flex-col m-0">
